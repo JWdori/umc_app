@@ -16,7 +16,9 @@ class SecondActivity : AppCompatActivity() {
 
 //        binding.txtSecond.text=intent.getStringExtra("data")
         binding.btn2.setOnClickListener{
-            finish()
+            var intent = Intent(this,SecondActivity::class.java)
+            intent.putExtra("data",binding.txtSecond.text.toString())
+            startActivity(intent)
         }
 
     }

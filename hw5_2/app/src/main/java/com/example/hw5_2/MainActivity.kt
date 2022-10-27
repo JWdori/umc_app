@@ -1,10 +1,12 @@
 package com.example.hw5_2
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.RecyclerView
 import com.example.hw5_2.databinding.ActivityMainBinding
 
-data class BusinessCard(val name:String,val contents:String, var isSwitched: Boolean = false)
+data class BusinessCard(val contents:String, var isSwitched: Boolean = false)
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,16 +20,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+        businessCardArrayList.add(BusinessCard("륙",))
+
         binding.btnMain.setOnClickListener{
-
-        }
-
-
-        for (x in 0..10){
-            businessCardArrayList.add(BusinessCard("륙","ㅎㅇ"))
-            businessCardArrayList.add(BusinessCard("담","ㅎㅇ"))
-            businessCardArrayList.add(BusinessCard("륙","ㅎㅇ"))
-            businessCardArrayList.add(BusinessCard("담","ㅎㅇ"))
+            var intent = Intent(this,SecondActivity::class.java)
+            startActivity(intent)
         }
 
 

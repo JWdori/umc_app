@@ -1,38 +1,58 @@
 package com.example.hw5_2
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.recyclerview.widget.RecyclerView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.hw5_2.databinding.ActivityMainBinding
 
 data class BusinessCard(val contents:String, var isSwitched: Boolean = false)
-
+var a = 1
 class MainActivity : AppCompatActivity() {
-
-    var businessCardArrayList = ArrayList<BusinessCard>()
-    private lateinit var customAdapter: CustomAdapter
-    lateinit var binding: ActivityMainBinding
+    private lateinit var viewBinding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        viewBinding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(viewBinding.root)
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
-        businessCardArrayList.add(BusinessCard("륙",))
+        val dataList: ArrayList<data> = arrayListOf()
+        val adapter = DataAdapter(dataList)
 
-        binding.btnMain.setOnClickListener{
-            var intent = Intent(this,SecondActivity::class.java)
+
+        println(a)
+        viewBinding.rvData.adapter = adapter
+        viewBinding.rvData.layoutManager = LinearLayoutManager(this)
+        viewBinding.btnMain.setOnClickListener {
+            var intent = Intent(this, SecondActivity::class.java)
             startActivity(intent)
+            a = 2
         }
+        if (a == 1) {
+            dataList.apply {
+                clear()
+                add(data("111", "여긴 안넣음"))
+                add(data("111", "여긴 안넣음"))
+            }
+        } else{
+            dataList.apply {
+                clear()
+                add(data("111", "여긴 안넣음"))
+                add(data("111", "여긴 안넣음"))
+                add(data("hard..", "여긴 안넣음"))
+            }
 
-
-        customAdapter= CustomAdapter(this,businessCardArrayList)
-        binding.listviewmain.adapter=customAdapter
     }
-}
-//class MainActivity : AppCompatActivity() {
+
+
+
+
+    }
+
+
+
+
+    //class MainActivity : AppCompatActivity() {
 //    private lateinit var binding: ActivityMainBinding
 //    var content:String = ""
 //
@@ -52,10 +72,17 @@ class MainActivity : AppCompatActivity() {
 //
 //
 //
-//    override fun onStart() {
-//        super.onStart()
-//        Toast.makeText(this,"onStart",Toast.LENGTH_SHORT).show()
-//    }
+    override fun onStop() {
+       super.onStop()
+            val dataList: ArrayList<data> = arrayListOf()
+            dataList.apply {
+            add(data("gd", "dd"))
+            add(data("gd", "dd"))
+                add(data("어쩔", "dd"))
+
+        }
+
+}
 //
 //    override fun onResume() {
 //        super.onResume()
@@ -80,22 +107,11 @@ class MainActivity : AppCompatActivity() {
 //
 //    override fun onRestart() {
 //        super.onRestart()
-//        Toast.makeText(this,"onRestart",Toast.LENGTH_SHORT).show()
-//        val builder = AlertDialog.Builder(this)
-//        builder.setMessage("이어서 작성하시겠습니까?")
-//        builder.setPositiveButton("넹",DialogInterface.OnClickListener{
-//                dialog,id-> //
-//        })
-//        builder.setNegativeButton("놉",DialogInterface.OnClickListener{
-//                dialog,id->
-//            binding.editMain.setText("")
-//        })
-//        builder.show()
-//        Log.e("dd",content)
 //    }
 //
 //    override fun onDestroy() {
 //        super.onDestroy()
 //        Toast.makeText(this,"onDestory",Toast.LENGTH_SHORT).show()
 //    }
-//}
+}
+

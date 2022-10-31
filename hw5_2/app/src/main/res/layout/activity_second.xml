@@ -9,7 +9,7 @@
         android:id="@+id/txt_second"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="내용 입력"
+        android:hint="내용 입력"
         android:maxLines="10"
         android:background="#00000000"
         app:layout_constraintEnd_toEndOf="parent"

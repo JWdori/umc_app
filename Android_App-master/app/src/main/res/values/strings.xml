@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">카카오 로그인</string>
+    <string name="baseUrl">http://99.81.100.188:5000</string>
+</resources>
